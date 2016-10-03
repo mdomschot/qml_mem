@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>Panel2.qml</file>
+        <file>Panel1.qml</file>
+        <file>Panel3.qml</file>
+        <file>Panel4.qml</file>
+        <file>Panel5.qml</file>
+        <file>Panel6.qml</file>
+        <file>PanelBase.qml</file>
+    </qresource>
+</RCC>

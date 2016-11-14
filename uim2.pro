@@ -4,7 +4,9 @@ QT += qml quick
 
 SOURCES += main.cpp \
     Diagnostics.cpp \
-    Cache.cpp
+    Cache.cpp \
+    App.cpp \
+    QuickView.cpp
 
 DESTDIR = ./bin
 
@@ -18,7 +20,8 @@ OTHER_FILES += \
                Panel4.qml \
                Panel5.qml \
                Panel6.qml \
-               PanelBase.qml
+               PanelBase.qml \
+               TextDelegate.qml
 
 # Default rules for deployment.
 include(deployment.pri)
@@ -28,7 +31,9 @@ unix:QMAKE_LFLAGS += -rdynamic
 
 HEADERS += \
     Diagnostics.h \
-    Cache.h
+    Cache.h \
+    App.h \
+    QuickView.h
 
 win32 {
     LIBS += -lpsapi

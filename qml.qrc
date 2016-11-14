@@ -8,5 +8,6 @@
         <file>Panel5.qml</file>
         <file>Panel6.qml</file>
         <file>PanelBase.qml</file>
+        <file>TextDelegate.qml</file>
     </qresource>
 </RCC>

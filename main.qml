@@ -45,37 +45,37 @@ Item {
     }
 
     // Expose diagnostic information on the application.
-    Text {
-        id: stats
-
-        anchors.left: parent.left
-        anchors.verticalCenter: controls.verticalCenter
-        anchors.margins: 9
-
-        font.family: "Lucida Console"
-        font.pixelSize: 12
-        font.bold: true
-
-        style: Text.Outline
-        styleColor: "black"
-        color: "yellow"
-
-        Timer {
-            repeat: true
-            running: true
-            triggeredOnStart: true
-            interval: 1000 / 5
-
-            onTriggered: {
-                var fps = diagnostics.getFPS().toFixed(1)
-                var memoryUsed = diagnostics.getMemoryUsed().toFixed(3)
-
-                var msg = "%2 FPS, %3 MB".arg(fps).arg(memoryUsed)
-
-                stats.text = msg
-            }
-        }
-    }
+    //Text {
+    //    id: stats
+    //
+    //    anchors.left: parent.left
+    //    anchors.verticalCenter: controls.verticalCenter
+    //    anchors.margins: 9
+    //
+    //    font.family: "Lucida Console"
+    //    font.pixelSize: 12
+    //    font.bold: true
+    //
+    //    style: Text.Outline
+    //    styleColor: "black"
+    //    color: "yellow"
+    //
+    //    Timer {
+    //        repeat: true
+    //        running: true
+    //        triggeredOnStart: true
+    //        interval: 1000 / 5
+    //
+    //        onTriggered: {
+    //            var fps = diagnostics.getFPS().toFixed(1)
+    //            var memoryUsed = diagnostics.getMemoryUsed().toFixed(3)
+    //
+    //            var msg = "%2 FPS, %3 MB".arg(fps).arg(memoryUsed)
+    //
+    //            stats.text = msg
+    //        }
+    //    }
+    //}
 
     // Exposes controls that allow the tester to change panels.
     Row {
@@ -87,16 +87,46 @@ Item {
         spacing: 6
 
 
-        Button { text: "GC";    onClicked: gc()                        }
-        Button { text: "Trim";  onClicked: cache.trimComponentCache()  }
-        Button { text: "Clear"; onClicked: cache.clearComponentCache() }
-        Button { text: "-";     onClicked: root.navigate(0); width: 30 }
-        Button { text: "1";     onClicked: root.navigate(1); width: 30 }
-        Button { text: "2";     onClicked: root.navigate(2); width: 30 }
-        Button { text: "3";     onClicked: root.navigate(3); width: 30 }
-        Button { text: "4";     onClicked: root.navigate(4); width: 30 }
-        Button { text: "5";     onClicked: root.navigate(5); width: 30 }
-        Button { text: "6";     onClicked: root.navigate(6); width: 30 }
+
+        //Button { text: "play (5)"; onClicked: player.start()              }
+        //Button { text: "reload";   onClicked: g_app.reload()              }
+        //Button { text: "GC";       onClicked: gc()                        }
+        //Button { text: "Trim";     onClicked: cache.trimComponentCache()  }
+        //Button { text: "Clear";    onClicked: cache.clearComponentCache() }
+        //Button { text: "-";        onClicked: root.navigate(0); width: 30 }
+        //Button { text: "1";        onClicked: root.navigate(1); width: 30 }
+        //Button { text: "2";        onClicked: root.navigate(2); width: 30 }
+        //Button { text: "3";        onClicked: root.navigate(3); width: 30 }
+        //Button { text: "4";        onClicked: root.navigate(4); width: 30 }
+        //Button { text: "5";        onClicked: root.navigate(5); width: 30 }
+        //Button { text: "6";        onClicked: root.navigate(6); width: 30 }
+    }
+
+    Timer {
+        running: true
+        interval: 5000
+        repeat: false
+
+        onTriggered: player.start()
+    }
+
+    Timer {
+        id: player
+
+        interval: 100
+        running: false
+        repeat: true
+
+        property int step: 0
+
+        onTriggered: {
+            root.navigate(step % 7)
+
+            if(++step === 35) {
+                step = 0
+                //stop()
+            }
+        }
     }
 
     function navigate(nextPanel) {
@@ -117,6 +147,7 @@ Item {
 
         // Ensure that we log while in transition.
         panel = 0
+        gc()
         doLog()
         panel = nextPanel
 
@@ -154,7 +185,7 @@ Item {
     // multiple delimiters in succession to align columns properly.
     function doLog() {
         if(log === 1) {
-            console.log(" - 1 2 3 4 5 6")
+            console.log("xxx - 1 2 3 4 5 6")
         }
 
         var memoryUsed = diagnostics.getMemoryUsed().toFixed(3)
@@ -162,7 +193,7 @@ Item {
         var msgs = ["", "", "", "", "", "", ""]
         msgs[panel] = memoryUsed
 
-        var msg = "%1 %2 %3 %4 %5 %6 %7 %8".arg(log)
+        var msg = "xxx%1 %2 %3 %4 %5 %6 %7 %8".arg(log)
                                            .arg(msgs[0])
                                            .arg(msgs[1])
                                            .arg(msgs[2])
@@ -174,5 +205,20 @@ Item {
         console.log(msg)
 
         ++log
+    }
+
+    Component.onCompleted: {
+        var myString = ["car", "boat", "plane", "train"]
+
+        for(var index = 0; index < myString.length; ++index) {
+            console.log("[][][] %1".arg(myString[index]))
+        }
+
+        index = 0
+        for(var vehicle = myString[index]; vehicle; vehicle = myString[++index]) {
+            console.log("[][][] %1".arg(vehicle))
+        }
+
+
     }
 }

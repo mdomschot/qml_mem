@@ -6,24 +6,8 @@ PanelBase {
     anchors.fill: parent
 
     title: "Panel 3"
-
-    QtObject {
-        id: internal
-
-        property Component delegate: Rectangle {
-            color: myIndex % 2 === 1 ? "#D6E5FF" : "#FFFFFF"
-
-            width: contentArea.width
-            height: childrenRect.height
-
-            Text {
-                text: myData
-
-                font.capitalization: Font.Capitalize
-                color: "#111111"
-            }
-        }
-    }
+    color0: "#D6E5FF"
+    color1: "#FFFFFF"
 
     Rectangle {
         id: titleBG
@@ -45,36 +29,50 @@ PanelBase {
         text: root.title
     }
 
-    Flickable {
-        id: flickable
+    Item {
+        id: contentArea
 
-        anchors.top: titleText.bottom
-        anchors.bottom: parent.bottom
-        anchors.left: parent.left
-        anchors.right: parent.right
+        anchors.fill: parent
 
-        contentWidth: contentArea.width
-        contentHeight: contentArea.height
-
-        clip: true
-
-        Column {
-            id: contentArea
-
-            width: flickable.width
-
-            Repeater {
-                id: content
-
-                model: 20
-
-                delegate: Loader {
-                    property string myData: "index %1".arg(index)
-                    property int myIndex: index
-
-                    sourceComponent: internal.delegate
-                }
-            }
-        }
+        TextDelegate { myData: "index %1".arg(0); myIndex: 0 }
+        TextDelegate { myData: "index %1".arg(1); myIndex: 1 }
+        TextDelegate { myData: "index %1".arg(2); myIndex: 2 }
+        TextDelegate { myData: "index %1".arg(3); myIndex: 3 }
+        TextDelegate { myData: "index %1".arg(4); myIndex: 4 }
+        TextDelegate { myData: "index %1".arg(5); myIndex: 5 }
+        TextDelegate { myData: "index %1".arg(6); myIndex: 6 }
+        TextDelegate { myData: "index %1".arg(7); myIndex: 7 }
+        TextDelegate { myData: "index %1".arg(8); myIndex: 8 }
+        TextDelegate { myData: "index %1".arg(9); myIndex: 9 }
+        TextDelegate { myData: "index %1".arg(10); myIndex: 10 }
+        TextDelegate { myData: "index %1".arg(11); myIndex: 11 }
+        TextDelegate { myData: "index %1".arg(12); myIndex: 12 }
+        TextDelegate { myData: "index %1".arg(13); myIndex: 13 }
+        TextDelegate { myData: "index %1".arg(14); myIndex: 14 }
+        TextDelegate { myData: "index %1".arg(15); myIndex: 15 }
+        TextDelegate { myData: "index %1".arg(16); myIndex: 16 }
+        TextDelegate { myData: "index %1".arg(17); myIndex: 17 }
+        TextDelegate { myData: "index %1".arg(18); myIndex: 18 }
+        TextDelegate { myData: "index %1".arg(19); myIndex: 19 }
+        TextDelegate { myData: "index %1".arg(0); myIndex: 0 }
+        TextDelegate { myData: "index %1".arg(1); myIndex: 1 }
+        TextDelegate { myData: "index %1".arg(2); myIndex: 2 }
+        TextDelegate { myData: "index %1".arg(3); myIndex: 3 }
+        TextDelegate { myData: "index %1".arg(4); myIndex: 4 }
+        TextDelegate { myData: "index %1".arg(5); myIndex: 5 }
+        TextDelegate { myData: "index %1".arg(6); myIndex: 6 }
+        TextDelegate { myData: "index %1".arg(7); myIndex: 7 }
+        TextDelegate { myData: "index %1".arg(8); myIndex: 8 }
+        TextDelegate { myData: "index %1".arg(9); myIndex: 9 }
+        TextDelegate { myData: "index %1".arg(10); myIndex: 10 }
+        TextDelegate { myData: "index %1".arg(11); myIndex: 11 }
+        TextDelegate { myData: "index %1".arg(12); myIndex: 12 }
+        TextDelegate { myData: "index %1".arg(13); myIndex: 13 }
+        TextDelegate { myData: "index %1".arg(14); myIndex: 14 }
+        TextDelegate { myData: "index %1".arg(15); myIndex: 15 }
+        TextDelegate { myData: "index %1".arg(16); myIndex: 16 }
+        TextDelegate { myData: "index %1".arg(17); myIndex: 17 }
+        TextDelegate { myData: "index %1".arg(18); myIndex: 18 }
+        TextDelegate { myData: "index %1".arg(19); myIndex: 19 }
     }
 }

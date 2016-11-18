@@ -6,6 +6,7 @@ Item {
     id: root
 
     property string title: ""
-    property color color0
-    property color color1
+    property color titleBGColor: "#BBDDFF"
+    property color tableBGColor: "#FFFFFF"
+    property color tableBGColorAlt: "#DDEEFF"
 }

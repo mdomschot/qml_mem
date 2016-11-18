@@ -6,15 +6,41 @@ PanelBase {
     anchors.fill: parent
 
     title: "Panel 1"
-    color0: "#FFD6E5"
-    color1: "#FFFFFF"
+    titleBGColor: "#FF5B9A"
+    tableBGColor: "#FFFFFF"
+    tableBGColorAlt: "#FFD6E5"
+
+    QtObject {
+        id: internal
+
+        property Component delegate: Rectangle {
+            property color myColor: root.tableBGColor
+            property color myColorAlt: root.tableBGColorAlt
+            property real myWidth: contentArea.width
+            //property string myData: "index %1".arg(index)
+            //property int myIndex: index
+
+            width: myWidth
+            height: childrenRect.height
+            color: myIndex % 2 === 1 ? myColorAlt : myColor
+
+            Text {
+                anchors.left: parent.left
+                anchors.right: parent.right
+
+                text: myData
+                font.capitalization: Font.Capitalize
+                color: "#111111"
+            }
+        }
+    }
 
     Rectangle {
         id: titleBG
 
         anchors.fill: titleText
 
-        color: "#FF5B9A"
+        color: root.titleBGColor
     }
 
     Text {
@@ -29,50 +55,62 @@ PanelBase {
         text: root.title
     }
 
-    Item {
-        id: contentArea
+    Flickable {
+        id: flickable
 
-        anchors.fill: parent
+        anchors.top: titleText.bottom
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
 
-        TextDelegate { myData: "index %1".arg(0); myIndex: 0 }
-        TextDelegate { myData: "index %1".arg(1); myIndex: 1 }
-        TextDelegate { myData: "index %1".arg(2); myIndex: 2 }
-        TextDelegate { myData: "index %1".arg(3); myIndex: 3 }
-        TextDelegate { myData: "index %1".arg(4); myIndex: 4 }
-        TextDelegate { myData: "index %1".arg(5); myIndex: 5 }
-        TextDelegate { myData: "index %1".arg(6); myIndex: 6 }
-        TextDelegate { myData: "index %1".arg(7); myIndex: 7 }
-        TextDelegate { myData: "index %1".arg(8); myIndex: 8 }
-        TextDelegate { myData: "index %1".arg(9); myIndex: 9 }
-        TextDelegate { myData: "index %1".arg(10); myIndex: 10 }
-        TextDelegate { myData: "index %1".arg(11); myIndex: 11 }
-        TextDelegate { myData: "index %1".arg(12); myIndex: 12 }
-        TextDelegate { myData: "index %1".arg(13); myIndex: 13 }
-        TextDelegate { myData: "index %1".arg(14); myIndex: 14 }
-        TextDelegate { myData: "index %1".arg(15); myIndex: 15 }
-        TextDelegate { myData: "index %1".arg(16); myIndex: 16 }
-        TextDelegate { myData: "index %1".arg(17); myIndex: 17 }
-        TextDelegate { myData: "index %1".arg(18); myIndex: 18 }
-        TextDelegate { myData: "index %1".arg(19); myIndex: 19 }
-        TextDelegate { myData: "index %1".arg(0); myIndex: 0 }
-        TextDelegate { myData: "index %1".arg(1); myIndex: 1 }
-        TextDelegate { myData: "index %1".arg(2); myIndex: 2 }
-        TextDelegate { myData: "index %1".arg(3); myIndex: 3 }
-        TextDelegate { myData: "index %1".arg(4); myIndex: 4 }
-        TextDelegate { myData: "index %1".arg(5); myIndex: 5 }
-        TextDelegate { myData: "index %1".arg(6); myIndex: 6 }
-        TextDelegate { myData: "index %1".arg(7); myIndex: 7 }
-        TextDelegate { myData: "index %1".arg(8); myIndex: 8 }
-        TextDelegate { myData: "index %1".arg(9); myIndex: 9 }
-        TextDelegate { myData: "index %1".arg(10); myIndex: 10 }
-        TextDelegate { myData: "index %1".arg(11); myIndex: 11 }
-        TextDelegate { myData: "index %1".arg(12); myIndex: 12 }
-        TextDelegate { myData: "index %1".arg(13); myIndex: 13 }
-        TextDelegate { myData: "index %1".arg(14); myIndex: 14 }
-        TextDelegate { myData: "index %1".arg(15); myIndex: 15 }
-        TextDelegate { myData: "index %1".arg(16); myIndex: 16 }
-        TextDelegate { myData: "index %1".arg(17); myIndex: 17 }
-        TextDelegate { myData: "index %1".arg(18); myIndex: 18 }
-        TextDelegate { myData: "index %1".arg(19); myIndex: 19 }
+        contentWidth: contentArea.width
+        contentHeight: contentArea.height
+
+        clip: true
+
+        Column {
+            id: contentArea
+
+            width: flickable.width
+
+            //Repeater {
+            //    model: 20
+            //
+            //    delegate: Loader {
+            //        property string myData: "index %1".arg(index)
+            //        property int myIndex: index
+            //
+            //        sourceComponent: internal.delegate
+            //    }
+            //    //delegate: internal.delegate
+            //    //delegate: TextDelegate {
+            //    //    myColor: root.tableBGColor
+            //    //    myColorAlt: root.tableBGColorAlt
+            //    //    myWidth: contentArea.width
+            //    //    myData: "index %1".arg(index)
+            //    //    myIndex: index
+            //    //}
+            //}
+            TextDelegate { myColor: root.tableBGColor; myColorAlt: root.tableBGColorAlt; myWidth: contentArea.width; myData: "index %1".arg(0);  myIndex:  0 }
+            TextDelegate { myColor: root.tableBGColor; myColorAlt: root.tableBGColorAlt; myWidth: contentArea.width; myData: "index %1".arg(1);  myIndex:  1 }
+            TextDelegate { myColor: root.tableBGColor; myColorAlt: root.tableBGColorAlt; myWidth: contentArea.width; myData: "index %1".arg(2);  myIndex:  2 }
+            TextDelegate { myColor: root.tableBGColor; myColorAlt: root.tableBGColorAlt; myWidth: contentArea.width; myData: "index %1".arg(3);  myIndex:  3 }
+            TextDelegate { myColor: root.tableBGColor; myColorAlt: root.tableBGColorAlt; myWidth: contentArea.width; myData: "index %1".arg(4);  myIndex:  4 }
+            TextDelegate { myColor: root.tableBGColor; myColorAlt: root.tableBGColorAlt; myWidth: contentArea.width; myData: "index %1".arg(5);  myIndex:  5 }
+            TextDelegate { myColor: root.tableBGColor; myColorAlt: root.tableBGColorAlt; myWidth: contentArea.width; myData: "index %1".arg(6);  myIndex:  6 }
+            TextDelegate { myColor: root.tableBGColor; myColorAlt: root.tableBGColorAlt; myWidth: contentArea.width; myData: "index %1".arg(7);  myIndex:  7 }
+            TextDelegate { myColor: root.tableBGColor; myColorAlt: root.tableBGColorAlt; myWidth: contentArea.width; myData: "index %1".arg(8);  myIndex:  8 }
+            TextDelegate { myColor: root.tableBGColor; myColorAlt: root.tableBGColorAlt; myWidth: contentArea.width; myData: "index %1".arg(9);  myIndex:  9 }
+            TextDelegate { myColor: root.tableBGColor; myColorAlt: root.tableBGColorAlt; myWidth: contentArea.width; myData: "index %1".arg(10); myIndex: 10 }
+            TextDelegate { myColor: root.tableBGColor; myColorAlt: root.tableBGColorAlt; myWidth: contentArea.width; myData: "index %1".arg(11); myIndex: 11 }
+            TextDelegate { myColor: root.tableBGColor; myColorAlt: root.tableBGColorAlt; myWidth: contentArea.width; myData: "index %1".arg(12); myIndex: 12 }
+            TextDelegate { myColor: root.tableBGColor; myColorAlt: root.tableBGColorAlt; myWidth: contentArea.width; myData: "index %1".arg(13); myIndex: 13 }
+            TextDelegate { myColor: root.tableBGColor; myColorAlt: root.tableBGColorAlt; myWidth: contentArea.width; myData: "index %1".arg(14); myIndex: 14 }
+            TextDelegate { myColor: root.tableBGColor; myColorAlt: root.tableBGColorAlt; myWidth: contentArea.width; myData: "index %1".arg(15); myIndex: 15 }
+            TextDelegate { myColor: root.tableBGColor; myColorAlt: root.tableBGColorAlt; myWidth: contentArea.width; myData: "index %1".arg(16); myIndex: 16 }
+            TextDelegate { myColor: root.tableBGColor; myColorAlt: root.tableBGColorAlt; myWidth: contentArea.width; myData: "index %1".arg(17); myIndex: 17 }
+            TextDelegate { myColor: root.tableBGColor; myColorAlt: root.tableBGColorAlt; myWidth: contentArea.width; myData: "index %1".arg(18); myIndex: 18 }
+            TextDelegate { myColor: root.tableBGColor; myColorAlt: root.tableBGColorAlt; myWidth: contentArea.width; myData: "index %1".arg(19); myIndex: 19 }
+        }
     }
 }

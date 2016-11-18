@@ -206,19 +206,4 @@ Item {
 
         ++log
     }
-
-    Component.onCompleted: {
-        var myString = ["car", "boat", "plane", "train"]
-
-        for(var index = 0; index < myString.length; ++index) {
-            console.log("[][][] %1".arg(myString[index]))
-        }
-
-        index = 0
-        for(var vehicle = myString[index]; vehicle; vehicle = myString[++index]) {
-            console.log("[][][] %1".arg(vehicle))
-        }
-
-
-    }
 }

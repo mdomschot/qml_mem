@@ -1,9 +1,8 @@
 #ifndef APP_H
 #define APP_H
 
-#include "QuickView.h"
-
 #include <QObject>
+#include <QQuickView>
 
 class App : public QObject
 {
@@ -29,7 +28,7 @@ private slots:
     void doReload();
 
 private:
-    QuickView* m_pViewer;
+    QQuickView* m_pViewer;
 };
 
 #endif

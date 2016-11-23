@@ -6,7 +6,6 @@
 
 #include <QQmlApplicationEngine>
 #include <QQmlEngine>
-#include <QQuickView>
 #include <QQmlContext>
 
 App::App(QObject* pParent) :
@@ -40,7 +39,7 @@ void App::init()
     qmlRegisterType<Diagnostics>("Sandbox", 1, 0, "Diagnostics");
     qmlRegisterType<Cache>("Sandbox", 1, 0, "Cache");
 
-    m_pViewer = new QuickView();
+    m_pViewer = new QQuickView();
 
     m_pViewer->setPersistentOpenGLContext(false);
     m_pViewer->setPersistentSceneGraph(false);

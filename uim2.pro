@@ -5,8 +5,7 @@ QT += qml quick
 SOURCES += main.cpp \
     Diagnostics.cpp \
     Cache.cpp \
-    App.cpp \
-    QuickView.cpp
+    App.cpp
 
 DESTDIR = ./bin
 
@@ -32,8 +31,7 @@ unix:QMAKE_LFLAGS += -rdynamic
 HEADERS += \
     Diagnostics.h \
     Cache.h \
-    App.h \
-    QuickView.h
+    App.h
 
 win32 {
     LIBS += -lpsapi

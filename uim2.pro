@@ -36,3 +36,8 @@ HEADERS += \
 win32 {
     LIBS += -lpsapi
 }
+
+DISTFILES += \
+    PushButton.qml \
+    SliderDelegate.qml \
+    BarGraph.qml

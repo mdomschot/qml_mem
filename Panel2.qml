@@ -17,8 +17,6 @@ PanelBase {
             property color myColor: root.tableBGColor
             property color myColorAlt: root.tableBGColorAlt
             property real myWidth: contentArea.width
-            //property string myData: "index %1".arg(index)
-            //property int myIndex: index
 
             width: myWidth
             height: childrenRect.height
@@ -31,6 +29,24 @@ PanelBase {
                 text: myData
                 font.capitalization: Font.Capitalize
                 color: "#111111"
+            }
+        }
+
+        property Component delegate2: Rectangle {
+            property color myColor: root.tableBGColor
+            property color myColorAlt: root.tableBGColorAlt
+            property real myWidth: contentArea.width
+
+            width: myWidth
+            height: childrenRect.height
+            color: myIndex % 2 === 1 ? myColorAlt : myColor
+
+            SliderDelegate {
+                Component.onCompleted: {
+                    minimum = 0
+                    maximum = myIndex * 2
+                    value = myIndex
+                }
             }
         }
     }
@@ -80,7 +96,7 @@ PanelBase {
                     property string myData: "index %1".arg(index)
                     property int myIndex: index
 
-                    sourceComponent: internal.delegate
+                    sourceComponent: internal.delegate2
                 }
             }
         }

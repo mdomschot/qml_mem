@@ -9,5 +9,15 @@
         <file>Panel6.qml</file>
         <file>PanelBase.qml</file>
         <file>TextDelegate.qml</file>
+        <file>Max.png</file>
+        <file>Max_Sel.png</file>
+        <file>Min.png</file>
+        <file>Min_Sel.png</file>
+        <file>SlideBall.png</file>
+        <file>SlideBall_Sel.png</file>
+        <file>SliderBar.png</file>
+        <file>BarGraph.qml</file>
+        <file>SliderDelegate.qml</file>
+        <file>PushButton.qml</file>
     </qresource>
 </RCC>

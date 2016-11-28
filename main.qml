@@ -58,7 +58,7 @@ Item {
         Row {
             spacing: 6
 
-            Text   { text: "Actions & Settings:"; width: 100; anchors.verticalCenter: parent.verticalCenter }
+            Text   { text: "Actions & Settings:"; width: 120; anchors.verticalCenter: parent.verticalCenter }
             Button { text: "Log Stats";          onClicked: doLog()                     }
             Button { text: "Reload";             onClicked: g_app.reload()              }
             Button { text: "GC";                 onClicked: gc()                        }
@@ -70,7 +70,7 @@ Item {
         Row {
             spacing: 6
 
-            Text   { text: "Panel Navigation:"; width: 100; anchors.verticalCenter: parent.verticalCenter }
+            Text   { text: "Panel Navigation:"; width: 120; anchors.verticalCenter: parent.verticalCenter }
             Button { text: "Run Test (5 Loops)"; onClicked: player.start()              }
             Button { text: "-";                  onClicked: root.navigate(0); width: 30 }
             Button { text: "1";                  onClicked: root.navigate(1); width: 30 }
@@ -85,7 +85,7 @@ Item {
     Timer {
         id: player
 
-        interval: 100
+        interval: 1000
         running: false
         repeat: true
 
